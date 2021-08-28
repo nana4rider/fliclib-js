@@ -1,23 +1,33 @@
 import { EventEmitter } from 'events';
 
-declare type CreateConnectionChannelError = 'NoError' | 'MaxPendingConnectionsReached';
-declare type ConnectionStatus = 'Disconnected' | 'Connected' | 'Ready';
-declare type DisconnectReason = 'Unspecified' | 'ConnectionEstablishmentFailed' | 'TimedOut' | 'BondingKeysMismatch';
-declare type RemovedReason =
+export declare type CreateConnectionChannelError = 'NoError' | 'MaxPendingConnectionsReached';
+
+export declare type ConnectionStatus = 'Disconnected' | 'Connected' | 'Ready';
+
+export declare type DisconnectReason =
+  'Unspecified' | 'ConnectionEstablishmentFailed' | 'TimedOut' | 'BondingKeysMismatch';
+
+export declare type RemovedReason =
   'RemovedByThisClient' | 'ForceDisconnectedByThisClient' | 'ForceDisconnectedByOtherClient'
   | 'ButtonIsPrivate' | 'VerifyTimeout' | 'InternetBackendError' | 'InvalidData' | 'CouldntLoadDevice'
   | 'DeletedByThisClient' | 'DeletedByOtherClient' | 'ButtonBelongsToOtherPartner' | 'DeletedFromButton'
 
-declare type ClickType = 'ButtonDown' | 'ButtonUp' | 'ButtonClick' | 'ButtonSingleClick' | 'ButtonDoubleClick' | 'ButtonHold';
-declare type BdAddrType = 'PublicBdAddrType' | 'RandomBdAddrType';
-declare type LatencyMode = 'NormalLatency' | 'LowLatency' | 'HighLatency';
-declare type ScanWizardResult =
+export declare type ClickType =
+  'ButtonDown' | 'ButtonUp' | 'ButtonClick'
+  | 'ButtonSingleClick' | 'ButtonDoubleClick' | 'ButtonHold';
+
+export declare type BdAddrType = 'PublicBdAddrType' | 'RandomBdAddrType';
+
+export declare type LatencyMode = 'NormalLatency' | 'LowLatency' | 'HighLatency';
+
+export declare type ScanWizardResult =
   'WizardSuccess' | 'WizardCancelledByUser' | 'WizardFailedTimeout'
   | 'WizardButtonIsPrivate' | 'WizardBluetoothUnavailable' | 'WizardInternetBackendError'
   | 'WizardInvalidData' | 'WizardButtonBelongsToOtherPartner' | 'WizardButtonAlreadyConnectedToOtherDevice';
-declare type BluetoothControllerState = 'Detached' | 'Resetting' | 'Attached';
 
-declare class FlicClient extends EventEmitter {
+export declare type BluetoothControllerState = 'Detached' | 'Resetting' | 'Attached';
+
+export declare class FlicClient extends EventEmitter {
   constructor(host: string, port: number);
   addScanner(flicScanner: FlicScanner): void;
   removeScanner(flicScanner: FlicScanner): void;
@@ -50,7 +60,7 @@ declare class FlicClient extends EventEmitter {
   once(event: 'buttonDeleted', listener: (bdAddr: string, deletedByThisClient: boolean) => void): EventEmitter;
 }
 
-interface GetInfoParameter {
+export interface GetInfoParameter {
   bluetoothControllerState: BluetoothControllerState;
   myBdAddr: string;
   myBdAddrType: BdAddrType;
@@ -60,7 +70,7 @@ interface GetInfoParameter {
   bdAddrOfVerifiedButtons: string[]
 }
 
-declare class FlicConnectionChannel {
+export declare class FlicConnectionChannel {
   latencyMode: LatencyMode;
   autoDisconnectTime: number;
 
@@ -81,18 +91,18 @@ declare class FlicConnectionChannel {
   once(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
 }
 
-interface FlicConnectionChannelOptions {
+export interface FlicConnectionChannelOptions {
   latencyMode: LatencyMode;
   autoDisconnectTime: number;
 }
 
-declare class FlicBatteryStatusListener {
+export declare class FlicBatteryStatusListener {
   constructor(bdAddr: string);
   on(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): EventEmitter;
   once(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): EventEmitter;
 }
 
-declare class FlicScanner {
+export declare class FlicScanner {
   constructor();
   on(event: 'advertisementPacket', listener: (
     bdAddr: string, name: string, rssi: number, isPrivate: boolean,
@@ -106,7 +116,7 @@ declare class FlicScanner {
   ) => void);
 }
 
-declare class FlicScanWizard {
+export declare class FlicScanWizard {
   constructor();
   on(event: 'foundPrivateButton', listener: () => void): EventEmitter;
   on(event: 'foundPublicButton', listener: (bdAddr: string, name: string) => void): EventEmitter;
