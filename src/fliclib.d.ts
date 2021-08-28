@@ -28,7 +28,7 @@ export declare type ScanWizardResult =
 export declare type BluetoothControllerState = 'Detached' | 'Resetting' | 'Attached';
 
 export declare class FlicClient extends EventEmitter {
-  constructor(host: string, port: number);
+  constructor(host: string, port?: number);
   addScanner(flicScanner: FlicScanner): void;
   removeScanner(flicScanner: FlicScanner): void;
   addScanWizard(flicScanWizard: FlicScanWizard): void;
@@ -74,7 +74,7 @@ export declare class FlicConnectionChannel {
   latencyMode: LatencyMode;
   autoDisconnectTime: number;
 
-  constructor(bdAddr: string, options: FlicConnectionChannelOptions);
+  constructor(bdAddr: string, options?: FlicConnectionChannelOptions);
   on(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): EventEmitter;
   on(event: 'removed', listener: (removedReason: RemovedReason) => void): EventEmitter;
   on(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): EventEmitter;
