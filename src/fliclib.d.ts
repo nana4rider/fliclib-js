@@ -108,12 +108,12 @@ export declare class FlicScanner extends EventEmitter {
     bdAddr: string, name: string, rssi: number, isPrivate: boolean,
     alreadyVerified: boolean, alreadyConnectedToThisDevice: boolean,
     alreadyConnectedToOtherDevice: boolean
-  ) => void);
+  ) => void): this;
   once(event: 'advertisementPacket', listener: (
     bdAddr: string, name: string, rssi: number, isPrivate: boolean,
     alreadyVerified: boolean, alreadyConnectedToThisDevice: boolean,
     alreadyConnectedToOtherDevice: boolean
-  ) => void);
+  ) => void): this;
 }
 
 export declare class FlicScanWizard extends EventEmitter {
