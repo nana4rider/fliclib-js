@@ -42,22 +42,22 @@ export declare class FlicClient extends EventEmitter {
     serialNumber: string, flicVersion: number, firmwareVersion: number) => void): void;
   deleteButton(bdAddr: string): void;
   close(): void;
-  on(event: 'ready', listener: () => void): EventEmitter;
-  on(event: 'close', listener: (hadError: any) => void): EventEmitter;
-  on(event: 'error', listener: (error: any) => void): EventEmitter;
-  on(event: 'newVerifiedButton', listener: (bdAddr: string) => void): EventEmitter;
-  on(event: 'noSpaceForNewConnection', listener: (noSpaceForNewConnection: number) => void): EventEmitter;
-  on(event: 'gotSpaceForNewConnection', listener: (gotSpaceForNewConnection: number) => void): EventEmitter;
-  on(event: 'bluetoothControllerState', listener: (bluetoothControllerState: BluetoothControllerState) => void): EventEmitter;
-  on(event: 'buttonDeleted', listener: (bdAddr: string, deletedByThisClient: boolean) => void): EventEmitter;
-  once(event: 'ready', listener: () => void): EventEmitter;
-  once(event: 'close', listener: (hadError: any) => void): EventEmitter;
-  once(event: 'error', listener: (error: any) => void): EventEmitter;
-  once(event: 'newVerifiedButton', listener: (bdAddr: string) => void): EventEmitter;
-  once(event: 'noSpaceForNewConnection', listener: (noSpaceForNewConnection: number) => void): EventEmitter;
-  once(event: 'gotSpaceForNewConnection', listener: (gotSpaceForNewConnection: number) => void): EventEmitter;
-  once(event: 'bluetoothControllerState', listener: (bluetoothControllerState: BluetoothControllerState) => void): EventEmitter;
-  once(event: 'buttonDeleted', listener: (bdAddr: string, deletedByThisClient: boolean) => void): EventEmitter;
+  on(event: 'ready', listener: () => void): this;
+  on(event: 'close', listener: (hadError: any) => void): this;
+  on(event: 'error', listener: (error: any) => void): this;
+  on(event: 'newVerifiedButton', listener: (bdAddr: string) => void): this;
+  on(event: 'noSpaceForNewConnection', listener: (noSpaceForNewConnection: number) => void): this;
+  on(event: 'gotSpaceForNewConnection', listener: (gotSpaceForNewConnection: number) => void): this;
+  on(event: 'bluetoothControllerState', listener: (bluetoothControllerState: BluetoothControllerState) => void): this;
+  on(event: 'buttonDeleted', listener: (bdAddr: string, deletedByThisClient: boolean) => void): this;
+  once(event: 'ready', listener: () => void): this;
+  once(event: 'close', listener: (hadError: any) => void): this;
+  once(event: 'error', listener: (error: any) => void): this;
+  once(event: 'newVerifiedButton', listener: (bdAddr: string) => void): this;
+  once(event: 'noSpaceForNewConnection', listener: (noSpaceForNewConnection: number) => void): this;
+  once(event: 'gotSpaceForNewConnection', listener: (gotSpaceForNewConnection: number) => void): this;
+  once(event: 'bluetoothControllerState', listener: (bluetoothControllerState: BluetoothControllerState) => void): this;
+  once(event: 'buttonDeleted', listener: (bdAddr: string, deletedByThisClient: boolean) => void): this;
 }
 
 export interface GetInfoParameter {
@@ -70,25 +70,25 @@ export interface GetInfoParameter {
   bdAddrOfVerifiedButtons: string[]
 }
 
-export declare class FlicConnectionChannel {
+export declare class FlicConnectionChannel extends EventEmitter {
   latencyMode: LatencyMode;
   autoDisconnectTime: number;
 
   constructor(bdAddr: string, options?: FlicConnectionChannelOptions);
-  on(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): EventEmitter;
-  on(event: 'removed', listener: (removedReason: RemovedReason) => void): EventEmitter;
-  on(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): EventEmitter;
-  on(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  on(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  on(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  on(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  once(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): EventEmitter;
-  once(event: 'removed', listener: (removedReason: RemovedReason) => void): EventEmitter;
-  once(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): EventEmitter;
-  once(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  once(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  once(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
-  once(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): EventEmitter;
+  on(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): this;
+  on(event: 'removed', listener: (removedReason: RemovedReason) => void): this;
+  on(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): this;
+  on(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): this;
+  once(event: 'removed', listener: (removedReason: RemovedReason) => void): this;
+  once(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): this;
+  once(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
 }
 
 export interface FlicConnectionChannelOptions {
@@ -96,13 +96,13 @@ export interface FlicConnectionChannelOptions {
   autoDisconnectTime: number;
 }
 
-export declare class FlicBatteryStatusListener {
+export declare class FlicBatteryStatusListener extends EventEmitter {
   constructor(bdAddr: string);
-  on(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): EventEmitter;
-  once(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): EventEmitter;
+  on(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): this;
+  once(event: 'batteryStatus', listener: (batteryPercentage: number, timestamp: Date) => void): this;
 }
 
-export declare class FlicScanner {
+export declare class FlicScanner extends EventEmitter {
   constructor();
   on(event: 'advertisementPacket', listener: (
     bdAddr: string, name: string, rssi: number, isPrivate: boolean,
@@ -116,14 +116,14 @@ export declare class FlicScanner {
   ) => void);
 }
 
-export declare class FlicScanWizard {
+export declare class FlicScanWizard extends EventEmitter {
   constructor();
-  on(event: 'foundPrivateButton', listener: () => void): EventEmitter;
-  on(event: 'foundPublicButton', listener: (bdAddr: string, name: string) => void): EventEmitter;
-  on(event: 'buttonConnected', listener: (bdAddr: string, name: string) => void): EventEmitter;
-  on(event: 'completed', listener: (result: ScanWizardResult, bdAddr: string, name: string) => void): EventEmitter;
-  once(event: 'foundPrivateButton', listener: () => void): EventEmitter;
-  once(event: 'foundPublicButton', listener: (bdAddr: string, name: string) => void): EventEmitter;
-  once(event: 'buttonConnected', listener: (bdAddr: string, name: string) => void): EventEmitter;
-  once(event: 'completed', listener: (result: ScanWizardResult, bdAddr: string, name: string) => void): EventEmitter;
+  on(event: 'foundPrivateButton', listener: () => void): this;
+  on(event: 'foundPublicButton', listener: (bdAddr: string, name: string) => void): this;
+  on(event: 'buttonConnected', listener: (bdAddr: string, name: string) => void): this;
+  on(event: 'completed', listener: (result: ScanWizardResult, bdAddr: string, name: string) => void): this;
+  once(event: 'foundPrivateButton', listener: () => void): this;
+  once(event: 'foundPublicButton', listener: (bdAddr: string, name: string) => void): this;
+  once(event: 'buttonConnected', listener: (bdAddr: string, name: string) => void): this;
+  once(event: 'completed', listener: (result: ScanWizardResult, bdAddr: string, name: string) => void): this;
 }
