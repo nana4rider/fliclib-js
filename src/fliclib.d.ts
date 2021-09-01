@@ -12,11 +12,15 @@ export declare type RemovedReason =
   | 'ButtonIsPrivate' | 'VerifyTimeout' | 'InternetBackendError' | 'InvalidData' | 'CouldntLoadDevice'
   | 'DeletedByThisClient' | 'DeletedByOtherClient' | 'ButtonBelongsToOtherPartner' | 'DeletedFromButton'
 
-export declare type ClickType =
-  'ButtonDown' | 'ButtonUp' | 'ButtonClick'
-  | 'ButtonSingleClick' | 'ButtonDoubleClick' | 'ButtonHold';
-
 export declare type BdAddrType = 'PublicBdAddrType' | 'RandomBdAddrType';
+
+export declare type UpOrDown = 'ButtonUp' | 'ButtonDown';
+
+export declare type ClickOrHold = 'ButtonClick' | 'ButtonHold';
+
+export declare type SingleOrDoubleClick = 'ButtonSingleClick' | 'ButtonDoubleClick';
+
+export declare type SingleOrDoubleClickOrHold = 'ButtonSingleClick' | 'ButtonDoubleClick' | 'ButtonHold';
 
 export declare type LatencyMode = 'NormalLatency' | 'LowLatency' | 'HighLatency';
 
@@ -78,17 +82,17 @@ export declare class FlicConnectionChannel extends EventEmitter {
   on(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): this;
   on(event: 'removed', listener: (removedReason: RemovedReason) => void): this;
   on(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): this;
-  on(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  on(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  on(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  on(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonUpOrDown', listener: (clickType: UpOrDown, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonClickOrHold', listener: (clickType: ClickOrHold, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonSingleOrDoubleClick', listener: (clickType: SingleOrDoubleClick, wasQueued: boolean, timeDiff: number) => void): this;
+  on(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: SingleOrDoubleClickOrHold, wasQueued: boolean, timeDiff: number) => void): this;
   once(event: 'createResponse', listener: (error: CreateConnectionChannelError, connectionStatus: ConnectionStatus) => void): this;
   once(event: 'removed', listener: (removedReason: RemovedReason) => void): this;
   once(event: 'connectionStatusChanged', listener: (connectionStatus: ConnectionStatus, disconnectReason: DisconnectReason) => void): this;
-  once(event: 'buttonUpOrDown', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  once(event: 'buttonClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  once(event: 'buttonSingleOrDoubleClick', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
-  once(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: ClickType, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonUpOrDown', listener: (clickType: UpOrDown, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonClickOrHold', listener: (clickType: ClickOrHold, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonSingleOrDoubleClick', listener: (clickType: SingleOrDoubleClick, wasQueued: boolean, timeDiff: number) => void): this;
+  once(event: 'buttonSingleOrDoubleClickOrHold', listener: (clickType: SingleOrDoubleClickOrHold, wasQueued: boolean, timeDiff: number) => void): this;
 }
 
 export interface FlicConnectionChannelOptions {
